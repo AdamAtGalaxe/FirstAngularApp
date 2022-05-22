@@ -1,0 +1,47 @@
+        <h2>{{ title }}</h2>
+        <ul>
+            <li *ngFor="let course of courses">{{course}} </li>
+        </ul>
+        <img [src]='imgURL' />
+        <table>
+            <tr>
+                <td [attr.colspan]="colSpan"></td>
+            </tr>
+        </table>
+        <div (click)="onDiv()">
+            <button (click)="onSave($event)" class="btn btn-primary"[class.active]="isActive" [style.backgroundColor]="isActive ? 'blue': 'white'">SAVE</button>
+        </div>
+        <p class="text-center">Open Console</p>
+        <div>
+            <a>press enter  </a>
+            <input class="key-press" (keyup.enter)="onKeyUp()" />
+            <a>&nbsp;&nbsp;enter text   </a>
+            <input class="get-value-old" (keyup.enter)="getValueOld($event)" />
+        </div>
+        <div>
+            <a>enter text&nbsp;&nbsp;&nbsp;</a>
+            <input #myVar1 class="get-value" (keyup.enter)="getValue(myVar1.value)" />
+            <a>&nbsp;&nbsp;enter text  </a>
+            <input [(ngModel)]="email" class="obj-passing" (keyup.enter)="getObjValue()" />
+        </div>
+        <div class="text-center">Course Formatting</div>
+
+        <div>
+            {{ course.title | uppercase}} <br/>
+            {{ course.students | number}} <br/>
+            {{ course.rating | number:'1.2-2' }} <br/>
+            {{ course.price | currency:"USD":true:"1.2-2" }} <br/>
+            {{ course.releaseDate | date:"shortDate" }} <br/>
+        </div>
+        <div>
+        </div>
+        <div>
+            {{longText | summary:20}}
+        </div>
+        <div></div>
+        
+        <div>
+            <a>&nbsp;&nbsp;enter text  </a>
+            <input [(ngModel)]="title2" />
+        </div>
+        <div>{{ title2 | titleCase }} </div>
